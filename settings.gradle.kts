@@ -20,5 +20,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ridersWrist"
-include(":app")
+include(":app", ":wear")
  
