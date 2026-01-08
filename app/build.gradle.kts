@@ -1,9 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
     id("kotlin-kapt")
-    id("com.google.dagger.hilt.android")
-    id("com.google.devtools.ksp")
 }
 
 android {
@@ -39,35 +39,31 @@ android {
 }
 
 dependencies {
-    // 1. Android Core & UI
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    // 1. Android Core & UI (libs로 통일)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
 
-    // 2. Lifecycle & ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
-    implementation("androidx.activity:activity-ktx:1.8.2")
-    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    // 2. Lifecycle & ViewModel (libs에 정의된 것 활용)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 
     // 3. Dependency Injection (Hilt)
-    implementation("com.google.dagger:hilt-android:2.50")
-    kapt("com.google.dagger:hilt-compiler:2.50")
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 
-    // 4. Concurrency (Coroutines & Flow)
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3") // 중요: Task -> Coroutine 변환
+    // 4. Wearable Communication & Concurrency
+    implementation(libs.play.services.wearable)
+    implementation(libs.kotlinx.coroutines.play.services) // 중복 제거됨
 
-    // 5. Wearable Communication (Phone side)
-    implementation("com.google.android.gms:play-services-wearable:18.1.0")
+    // 5. Local DB (Room) - 로그 저장용
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler) // [필수] Room 어노테이션 처리를 위해 꼭 필요!
 
-    // 6. Local DB (Room)
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
-    ksp("androidx.room:room-compiler:2.6.1")
-}
-
-kapt {
-    correctErrorTypes = true
+    // 6. Test
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }
