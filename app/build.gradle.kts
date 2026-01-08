@@ -49,7 +49,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-
     // 2. Lifecycle & ViewModel (libs에 정의된 것 활용)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 

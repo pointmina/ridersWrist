@@ -2,13 +2,17 @@ package com.hanto.riderswrist.presentation
 
 import android.graphics.Color
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.hanto.riderswrist.databinding.ActivityMainBinding
 import com.hanto.riderswrist.presentation.home.HomeViewModel
+import com.hanto.riderswrist.util.applyWindowInsets
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -18,13 +22,18 @@ class MainActivity : AppCompatActivity() {
     // ViewBinding 초기화
     private lateinit var binding: ActivityMainBinding
 
-    // ViewModel 주입 (by viewModels 위임 프로퍼티 사용)
+    // ViewModel 주입
     private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        enableEdgeToEdge()
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.root.applyWindowInsets(applyTop = true, applyBottom = true)
 
         setupObservers()
     }
