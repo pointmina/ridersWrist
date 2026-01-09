@@ -43,12 +43,14 @@ android {
 }
 
 dependencies {
+
     // 1. Android Core & UI (libs로 통일)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
     // 2. Lifecycle & ViewModel (libs에 정의된 것 활용)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
@@ -58,12 +60,12 @@ dependencies {
 
     // 4. Wearable Communication & Concurrency
     implementation(libs.play.services.wearable)
-    implementation(libs.kotlinx.coroutines.play.services) // 중복 제거됨
+    implementation(libs.kotlinx.coroutines.play.services)
 
     // 5. Local DB (Room) - 로그 저장용
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
-    ksp(libs.room.compiler) // [필수] Room 어노테이션 처리를 위해 꼭 필요!
+    ksp(libs.room.compiler)
 
     // 6. Test
     testImplementation(libs.junit)
