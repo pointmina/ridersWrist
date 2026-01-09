@@ -1,16 +1,20 @@
 package com.hanto.riderswrist.presentation
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
-import androidx.activity.ComponentActivity // Wear OS는 AppCompatActivity보다 가벼운 ComponentActivity 권장
+import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.hanto.riderswrist.databinding.ActivityMainBinding
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.hanto.riderswrist.databinding.ActivityWearMainBinding
 import com.hanto.riderswrist.util.applyWindowInsets
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class WearMainActivity : ComponentActivity() {
@@ -20,23 +24,49 @@ class WearMainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         enableEdgeToEdge()
 
         binding = ActivityWearMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        
+
         binding.root.applyWindowInsets(applyTop = true, applyBottom = true)
 
         setupListeners()
+        observeViewModel()
     }
 
     private fun setupListeners() {
         with(binding) {
-            btnConnect.setOnClickListener { viewModel.onConnectClicked() }
-            btnDisconnect.setOnClickListener { viewModel.onDisconnectClicked() }
+            // 통합된 토글 버튼 리스너
+            btnConnectionToggle.setOnClickListener {
+                viewModel.onConnectionToggleClicked()
+            }
             btnVolUp.setOnClickListener { viewModel.onVolumeUp() }
             btnVolDown.setOnClickListener { viewModel.onVolumeDown() }
+        }
+    }
+
+    private fun observeViewModel() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.isConnected.collect { isConnected ->
+                    updateConnectionUi(isConnected)
+                }
+            }
+        }
+    }
+
+    private fun updateConnectionUi(isConnected: Boolean) {
+        with(binding.btnConnectionToggle) {
+            if (isConnected) {
+                text = "DISCONNECT"
+                // Red Color for Disconnect
+                backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D32F2F"))
+            } else {
+                text = "CONNECT"
+                // Green Color for Connect
+                backgroundTintList = ColorStateList.valueOf(Color.parseColor("#4CAF50"))
+            }
         }
     }
 }

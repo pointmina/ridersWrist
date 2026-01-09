@@ -19,10 +19,8 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    // ViewBinding 초기화
     private lateinit var binding: ActivityMainBinding
 
-    // ViewModel 주입
     private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
