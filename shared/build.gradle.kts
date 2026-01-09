@@ -49,7 +49,7 @@ dependencies {
     kapt(libs.hilt.compiler)
 
     // Coroutines (비동기 처리)
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation(libs.kotlinx.coroutines.play.services)
 
     // Wearable Data Layer (워치 통신 핵심)
     implementation(libs.play.services.wearable)

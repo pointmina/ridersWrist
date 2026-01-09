@@ -1,6 +1,7 @@
-package com.hanto.riderswrist.domain.model
+package com.hanto.riderswrist.shared.domain.model
 
-import com.hanto.riderswrist.domain.common.WearablePath
+import com.hanto.riderswrist.shared.domain.common.WearablePath
+
 
 enum class IntercomCommand {
     CONNECT,        // 연결 요청

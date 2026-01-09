@@ -1,7 +1,7 @@
-package com.hanto.riderswrist.domain.usecase
+package com.hanto.riderswrist.shared.domain.usecase
 
-import com.hanto.riderswrist.domain.model.IntercomCommand
-import com.hanto.riderswrist.domain.repository.WearableRepository
+import com.hanto.riderswrist.shared.domain.model.IntercomCommand
+import com.hanto.riderswrist.shared.domain.repository.WearableRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

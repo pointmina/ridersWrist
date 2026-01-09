@@ -1,4 +1,4 @@
-package com.hanto.riderswrist.domain.repository
+package com.hanto.riderswrist.shared.domain.repository
 
 import kotlinx.coroutines.flow.Flow
 

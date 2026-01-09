@@ -44,6 +44,8 @@ android {
 
 dependencies {
 
+    implementation(project(":shared"))
+
     // 1. Android Core & UI (libs로 통일)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

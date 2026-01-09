@@ -1,7 +1,7 @@
-package com.hanto.riderswrist.di
+package com.hanto.riderswrist.shared.di
 
-import com.hanto.riderswrist.data.repository.GmsWearableRepository
-import com.hanto.riderswrist.domain.repository.WearableRepository
+import com.hanto.riderswrist.shared.data.repository.GmsWearableRepository
+import com.hanto.riderswrist.shared.domain.repository.WearableRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

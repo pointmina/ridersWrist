@@ -1,10 +1,10 @@
-package com.hanto.riderswrist.presentation
+package com.hanto.riderswrist.wear.presentation
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hanto.riderswrist.domain.common.WearablePath
-import com.hanto.riderswrist.domain.usecase.SendIntercomCommandUseCase
+import com.hanto.riderswrist.shared.domain.common.WearablePath
+import com.hanto.riderswrist.shared.domain.usecase.SendIntercomCommandUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

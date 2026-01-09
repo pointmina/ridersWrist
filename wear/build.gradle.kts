@@ -36,6 +36,11 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+    
     useLibrary("wear-sdk")
     buildFeatures {
         compose = true
@@ -46,7 +51,12 @@ dependencies {
 
     implementation(project(":shared"))
 
-    implementation(libs.play.services.wearable)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
+
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)

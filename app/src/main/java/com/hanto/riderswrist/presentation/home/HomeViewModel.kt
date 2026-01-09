@@ -1,10 +1,9 @@
 package com.hanto.riderswrist.presentation.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hanto.riderswrist.domain.model.IntercomCommand
-import com.hanto.riderswrist.domain.usecase.ObserveIntercomCommandsUseCase
+import com.hanto.riderswrist.shared.domain.model.IntercomCommand
+import com.hanto.riderswrist.shared.domain.usecase.ObserveIntercomCommandsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -49,16 +48,20 @@ class HomeViewModel @Inject constructor(
                 // 가짜 연결 딜레이 시뮬레이션
                 simulateConnectionProcess()
             }
+
             IntercomCommand.DISCONNECT -> {
                 _connectionState.value = "Disconnected"
                 updateLog("[$timestamp] Disconnected")
             }
+
             IntercomCommand.VOLUME_UP -> {
                 updateLog("[$timestamp] Volume UP ▲")
             }
+
             IntercomCommand.VOLUME_DOWN -> {
                 updateLog("[$timestamp] Volume DOWN ▼")
             }
+
             IntercomCommand.UNKNOWN -> {
                 // 무시
             }

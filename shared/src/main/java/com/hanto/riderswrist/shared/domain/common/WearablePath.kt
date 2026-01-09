@@ -1,4 +1,4 @@
-package com.hanto.riderswrist.domain.common
+package com.hanto.riderswrist.shared.domain.common
 
 object WearablePath {
     // [Watch -> Phone] 명령

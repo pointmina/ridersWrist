@@ -1,8 +1,10 @@
-package com.hanto.riderswrist.presentation
+package com.hanto.riderswrist.wear.presentation
 
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -59,13 +61,13 @@ class WearMainActivity : ComponentActivity() {
     private fun updateConnectionUi(isConnected: Boolean) {
         with(binding.btnConnectionToggle) {
             if (isConnected) {
-                text = "DISCONNECT"
+                TextView.setText = "DISCONNECT"
                 // Red Color for Disconnect
-                backgroundTintList = ColorStateList.valueOf(Color.parseColor("#D32F2F"))
+                View.setBackgroundTintList = ColorStateList.valueOf(Color.parseColor("#D32F2F"))
             } else {
-                text = "CONNECT"
+                TextView.setText = "CONNECT"
                 // Green Color for Connect
-                backgroundTintList = ColorStateList.valueOf(Color.parseColor("#4CAF50"))
+                View.setBackgroundTintList = ColorStateList.valueOf(Color.parseColor("#4CAF50"))
             }
         }
     }

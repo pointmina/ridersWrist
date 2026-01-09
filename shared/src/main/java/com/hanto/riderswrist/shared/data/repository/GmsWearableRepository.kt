@@ -1,10 +1,10 @@
-package com.hanto.riderswrist.data.repository
+package com.hanto.riderswrist.shared.data.repository
 
 import android.content.Context
 import android.util.Log
 import com.google.android.gms.wearable.MessageClient
 import com.google.android.gms.wearable.Wearable
-import com.hanto.riderswrist.domain.repository.WearableRepository
+import com.hanto.riderswrist.shared.domain.repository.WearableRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
