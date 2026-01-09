@@ -13,6 +13,7 @@ constraintlayout = "2.2.1"
 ksp = "2.0.21-1.0.25"
 hilt = "2.51.1"
 room = "2.6.1"
+wear = "1.3.0"
 wearable = "18.1.0"
 coroutines = "1.7.3"
 lifecycle = "2.7.0"
@@ -27,6 +28,7 @@ coreSplashscreen = "1.0.1"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 androidx-material3 = { module = "androidx.compose.material3:material3" }
+androidx-wear = { module = "androidx.wear:wear", version.ref = "wear" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
