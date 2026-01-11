@@ -54,9 +54,11 @@ class MainActivity : AppCompatActivity() {
                         binding.tvConnectionStatus.text = state
                         // 상태에 따른 텍스트 색상 변경 (UX 디테일)
                         if (state.contains("Connected")) {
-                            binding.tvConnectionStatus.setTextColor(Color.parseColor("#4CAF50")) // Green
-                        } else {
-                            binding.tvConnectionStatus.setTextColor(Color.parseColor("#D32F2F")) // Red
+                            binding.tvConnectionStatus.setTextColor(Color.parseColor("#00E5FF"))
+                        } else if (state.contains("Connecting...")) {
+                            binding.tvConnectionStatus.setTextColor(Color.parseColor("#FFD740"))
+                        }else {
+                            binding.tvConnectionStatus.setTextColor(Color.parseColor("#FF5252"))
                         }
                     }
                 }

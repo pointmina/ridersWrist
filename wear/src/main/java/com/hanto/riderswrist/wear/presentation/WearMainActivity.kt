@@ -3,18 +3,14 @@ package com.hanto.riderswrist.wear.presentation
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.view.View
-import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.hanto.riderswrist.databinding.ActivityWearMainBinding
-import com.hanto.riderswrist.util.applyWindowInsets
+import com.hanto.riderswrist.wear.databinding.ActivityWearMainBinding
+import com.hanto.riderswrist.wear.util.applyWindowInsets
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -39,7 +35,6 @@ class WearMainActivity : ComponentActivity() {
 
     private fun setupListeners() {
         with(binding) {
-            // 통합된 토글 버튼 리스너
             btnConnectionToggle.setOnClickListener {
                 viewModel.onConnectionToggleClicked()
             }
@@ -60,15 +55,8 @@ class WearMainActivity : ComponentActivity() {
 
     private fun updateConnectionUi(isConnected: Boolean) {
         with(binding.btnConnectionToggle) {
-            if (isConnected) {
-                TextView.setText = "DISCONNECT"
-                // Red Color for Disconnect
-                View.setBackgroundTintList = ColorStateList.valueOf(Color.parseColor("#D32F2F"))
-            } else {
-                TextView.setText = "CONNECT"
-                // Green Color for Connect
-                View.setBackgroundTintList = ColorStateList.valueOf(Color.parseColor("#4CAF50"))
-            }
+            isSelected = isConnected
+            text = if (isConnected) "DISCONNECT" else "CONNECT"
         }
     }
 }

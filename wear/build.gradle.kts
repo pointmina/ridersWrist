@@ -12,7 +12,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.hanto.riderswrist.wear"
+        applicationId = "com.hanto.riderswrist"
         minSdk = 30
         targetSdk = 36
         versionCode = 1

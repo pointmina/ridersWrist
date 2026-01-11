@@ -45,7 +45,6 @@ class HomeViewModel @Inject constructor(
         when (command) {
             IntercomCommand.CONNECT -> {
                 updateLog("[$timestamp] Connecting...")
-                // 가짜 연결 딜레이 시뮬레이션
                 simulateConnectionProcess()
             }
 

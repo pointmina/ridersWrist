@@ -33,6 +33,7 @@ class GmsWearableRepository @Inject constructor(
 
     override fun observeIncomingMessages(): Flow<Pair<String, ByteArray?>> = callbackFlow {
         val listener = MessageClient.OnMessageReceivedListener { messageEvent ->
+            Log.d("GmsRepo", "Received path: ${messageEvent.path} from ${messageEvent.sourceNodeId}")
             trySend(messageEvent.path to messageEvent.data)
         }
         messageClient.addListener(listener)
